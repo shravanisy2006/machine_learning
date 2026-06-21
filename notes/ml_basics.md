@@ -1,16 +1,20 @@
-# What is Machine Learning ?
+# What is Machine Learning?
 
-Machine learning is a subset of Artificial learning. Machine Learning learns patterns from data to make predictions or decisions, and good-quality data helps the model perform better. The feeded deta is preprocessed removing the outliers , noisy data and null values then through the processed data the model learn patterns from it and through that it predicts , classifies or make decision. 
+Machine Learning is a subset of Artificial Intelligence (AI).
+
+Machine Learning learns patterns from data to make predictions or decisions, and good-quality data helps the model perform better.
+
+The input data is preprocessed by removing outliers, noisy data, and handling missing values. The model then learns patterns from the processed data and uses those patterns to predict, classify, or make decisions.
 
 ---
 
-## Types of ML
+## Types of Machine Learning
 
 1. Supervised Learning
 
 2. Unsupervised Learning
 
-3. Recommender System
+3. Recommender Systems
 
 4. Reinforcement Learning
 
@@ -18,13 +22,18 @@ Machine learning is a subset of Artificial learning. Machine Learning learns pat
 
 ### Supervised Learning
 
-It mainly refers to algorithms that learn X to Y or input to output mappings.
+Supervised Learning refers to algorithms that learn mappings from input variables (X) to output variables (Y).
 
-Here we give the right examples to the learning algorithm to learn from the right answers.
+In supervised learning, we provide the algorithm with input data along with the correct output labels. The algorithm learns from these examples and predicts outputs for new unseen data.
 
-Applications : spam filtering , speech recognition , machine translation , online advertising
+Applications:
 
-#### Type of supervised learning:
+- Spam Filtering
+- Speech Recognition
+- Machine Translation
+- Online Advertising
+
+#### Types of Supervised Learning
 
 1. Regression
 
