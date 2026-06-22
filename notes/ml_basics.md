@@ -111,5 +111,9 @@ The goal of Linear Regression is to learn a function that maps input features (x
 
 ## Cost Function
 
-y (hat) - y = error
+A linear regression cost function measures the error between a model's predictions and the actual data values. 
 
+
+![alt text](image.png)
+
+y (hat) - y = error
