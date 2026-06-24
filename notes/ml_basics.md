@@ -113,7 +113,13 @@ The goal of Linear Regression is to learn a function that maps input features (x
 
 A linear regression cost function measures the error between a model's predictions and the actual data values. 
 
+The cost function measures how well the model performs by calculating the difference between predicted values and actual values.
+
+The goal is to find the values of parameters (w and b) that minimize the cost function J(w,b).
+
 
 ![alt text](image.png)
+
+chose W which minimizes J(W)
 
 y (hat) - y = error
