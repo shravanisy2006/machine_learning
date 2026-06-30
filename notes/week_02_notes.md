@@ -2,9 +2,9 @@
 
 # Multiple Linear Regression
 
-Multiple Linear Regression is an extension of Linear Regression that uses multiple input features to predict an output.
+Multiple Linear Regression is an extension of Linear Regression where multiple input features are used to predict an output.
 
-Instead of using a single feature, the model learns from multiple features simultaneously.
+Instead of using only one feature, the model learns from several features simultaneously.
 
 Example:
 
@@ -19,176 +19,246 @@ Example Training Example:
 
 ```text
 x = [2104, 5, 1, 45]
+```
+
+Where:
+
+* 2104 → Area
+* 5 → Number of Bedrooms
+* 1 → Number of Floors
+* 45 → Age of House
 
 ---
 
-Multiple Feature Notation
-n : Number of features
-x : Feature vector
-xⱼ : j-th feature
-x⁽ⁱ⁾ : i-th training example
-xⱼ⁽ⁱ⁾ : j-th feature of the i-th training example
-w : Weight vector
-b : Bias parameter
+# Multiple Feature Notation
+
+* **n** : Number of features
+* **x** : Feature vector
+* **xⱼ** : j-th feature
+* **x⁽ⁱ⁾** : i-th training example
+* **xⱼ⁽ⁱ⁾** : j-th feature of the i-th training example
+* **w** : Weight vector
+* **b** : Bias parameter
 
 Example:
 
+```text
 x⁽¹⁾ = [2104, 5, 1, 45]
-Multiple Linear Regression Model
-
-The hypothesis function for multiple variables is:
-
-f(x) = w₁x₁ + w₂x₂ + w₃x₃ + ... + wₙxₙ + b
-
-or in vectorized form:
-
-f(x) = w · x + b
-
-where:
-
-w = Weight vector
-x = Feature vector
-b = Bias term
-
-Goal:
-
-Find values of w and b such that predictions closely match the actual values.
+```
 
 ---
 
-Vectorization
+# Multiple Linear Regression Model
 
-Vectorization allows us to perform operations on entire arrays without explicitly using loops.
+The hypothesis or model is represented as:
+
+```text
+f(x) = w₁x₁ + w₂x₂ + w₃x₃ + ... + wₙxₙ + b
+```
+
+or
+
+```text
+f(x) = w · x + b
+```
+
+where:
+
+* **w** = Weight vector
+* **b** = Bias term
+* **f(x)** = Prediction
+
+Goal:
+
+Find values of **w** and **b** such that predictions closely match the actual values.
+
+---
+
+# Vectorization
+
+Vectorization allows us to perform computations on entire arrays without using explicit loops.
 
 Instead of:
 
+```python
 prediction = 0
 
 for i in range(n):
     prediction += w[i] * x[i]
 
 prediction += b
+```
 
 We use:
 
+```python
 prediction = np.dot(w, x) + b
+```
 
 Advantages:
 
-Faster computation
-Cleaner code
-Efficient for large datasets
-Cost Function for Multiple Variables
+* Faster computation
+* Cleaner code
+* Efficient for large datasets
+
+---
+
+# Cost Function for Multiple Variables
 
 The cost function measures how well the model fits the training data.
 
 For Multiple Linear Regression:
 
+```text
 J(w,b) = (1 / 2m) Σ (f(x⁽ⁱ⁾) - y⁽ⁱ⁾)²
+```
 
 where:
 
-J(w,b) = Cost Function
-m = Number of training examples
+* **J(w,b)** = Cost Function
+* **m** = Number of training examples
 
 Goal:
 
-Choose values of w and b that minimize J(w,b).
-
----
+Choose values of **w** and **b** that minimize **J(w,b)**.
 
 Prediction Error:
 
+```text
 Error = Predicted Value - Actual Value
 
 Error = ŷ - y
+```
 
 ---
 
-Gradient Descent for Multiple Variables
+# Gradient Descent for Multiple Variables
 
 Gradient Descent is an optimization algorithm used to minimize the cost function.
 
-It repeatedly updates the parameters w and b to reduce the cost.
+It repeatedly updates the parameters **w** and **b** to reduce the cost.
 
 Steps:
 
-Initialize w and b.
-Compute gradients.
-Update parameters.
-Repeat until convergence.
+1. Initialize w and b.
+2. Compute gradients.
+3. Update parameters.
+4. Repeat until convergence.
 
 Parameter Update Rules:
 
+```text
 wⱼ = wⱼ - α (∂J / ∂wⱼ)
 
 b = b - α (∂J / ∂b)
+```
 
 where:
 
-α = Learning Rate
-Gradient Computation
+* **α** = Learning Rate
+
+---
+
+# Gradient Computation
 
 Derivative with respect to each weight:
 
+```text
 ∂J/∂wⱼ = (1/m) Σ (f(x⁽ⁱ⁾) - y⁽ⁱ⁾) xⱼ⁽ⁱ⁾
+```
 
 Derivative with respect to bias:
 
+```text
 ∂J/∂b = (1/m) Σ (f(x⁽ⁱ⁾) - y⁽ⁱ⁾)
-Feature Scaling
+```
+
+---
+
+# Feature Scaling
 
 Feature Scaling transforms features to a similar range.
 
 Example:
 
-Area	Bedrooms
-2000	5
-1000	2
+| Area | Bedrooms |
+|-------|-----------|
+| 2000 | 5 |
+| 1000 | 2 |
 
-The feature Area has much larger values than Bedrooms.
+The feature **Area** has much larger values than **Bedrooms**.
 
 Without Feature Scaling, Gradient Descent may converge slowly.
 
 Benefits:
 
-Faster convergence
-Improved optimization
-Prevents oscillations during training
-Mean Normalization
+* Faster convergence
+* Improved optimization
+* Prevents oscillations during training
+
+---
+
+# Mean Normalization
 
 Mean Normalization scales features using:
 
+```text
 x = (x - mean) / (max - min)
+```
 
 where:
 
-mean = Average value of the feature
-max = Maximum value
-min = Minimum value
-Z-Score Normalization
+* **mean** = Average value of the feature
+* **max** = Maximum value
+* **min** = Minimum value
+
+Example:
+
+```python
+scaled_feature = (feature - mean) / (max - min)
+```
+
+---
+
+# Z-Score Normalization
 
 Z-Score Normalization transforms features such that:
 
+```text
 Mean ≈ 0
 Standard Deviation ≈ 1
+```
 
 Formula:
 
+```text
 x = (x - μ) / σ
+```
 
 where:
 
-μ = Mean
-σ = Standard Deviation
-Checking Gradient Descent Convergence
+* **μ** = Mean
+* **σ** = Standard Deviation
+
+Example:
+
+```python
+scaled_feature = (feature - mean) / std
+```
+
+---
+
+# Checking Gradient Descent Convergence
 
 Gradient Descent converges when:
 
+```text
 Cost decreases and eventually stops changing significantly.
+```
 
 Typically, the Cost vs Iterations graph looks like:
 
+```text
 High Cost
     |
     |\
@@ -197,51 +267,53 @@ High Cost
     |   \____
     |
     +----------------> Iterations
+```
 
 If the cost consistently decreases, Gradient Descent is converging.
 
---- 
+---
 
-Learning Rate (α)
+# Learning Rate (α)
 
 The learning rate controls the step size during Gradient Descent.
 
-Too small → Learning becomes slow.
-Too large → Algorithm may diverge.
-Proper value → Faster convergence.
+* Too small → Learning becomes slow.
+* Too large → Algorithm may diverge.
+* Proper value → Faster convergence.
 
 Common values:
 
+```python
 alpha = 0.1
 alpha = 0.01
 alpha = 0.001
 alpha = 0.0001
-Feature Engineering
+```
+
+---
+
+# Feature Engineering
 
 Feature Engineering involves creating new features from existing features to improve model performance.
 
 Examples:
 
+```python
 area = frontage * depth
 
 age_per_room = age / rooms
+```
 
 Feature Engineering can significantly improve prediction accuracy.
 
---- 
+---
 
-Key Takeaways
+# Key Takeaways
 
-Multiple Linear Regression uses multiple features for prediction.
-
-Vectorization using np.dot() improves efficiency.
-
-Gradient Descent minimizes the cost function.
-
-Feature Scaling speeds up convergence.
-
-Mean Normalization and Z-Score Normalization are commonly used scaling techniques.
-
-Choosing an appropriate learning rate is essential.
-
-Feature Engineering can improve model performance.
+* Multiple Linear Regression uses multiple features for prediction.
+* Vectorization using `np.dot()` improves efficiency.
+* Gradient Descent minimizes the cost function.
+* Feature Scaling speeds up convergence.
+* Mean Normalization and Z-Score Normalization are commonly used scaling techniques.
+* Choosing an appropriate learning rate is essential.
+* Feature Engineering can improve model performance.
